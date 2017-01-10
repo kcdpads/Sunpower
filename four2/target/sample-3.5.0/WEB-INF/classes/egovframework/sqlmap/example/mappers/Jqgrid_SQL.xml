@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.jqgridTable.service.impl.JqgridMapper">
+
+	<!-- 메인조회쿼리 -->
+	<select id="selectJqgridList" parameterType="jqgridVO" resultType="egovMap">
+		SELECT  a.*
+	      FROM  (
+			      	SELECT  a.*,
+			                ROWNUM rnum,
+			                FLOOR((ROWNUM - 1) /#{rows} + 1) pageNumber
+			          FROM  (
+					          	SELECT id
+								     , name
+									 , phone
+									 , address
+									 , etcc
+									 , @RN:=@RN+1 ROWNUM
+								  FROM ebu
+								     , (SELECT @RN:=0) R
+								 WHERE 1=1
+								 <if test='serviceImplYn != null'>
+								 	<if test='serviceImplYn == "A"'>
+								 		AND name = 'hanq'
+								 	</if>
+								   	<if test='serviceImplYn == "B"'>
+								 		AND name = 'shink'
+								 	</if>
+								 	<if test='serviceImplYn == "D"'>
+								 		AND name = 'rrrr'
+								 	</if>
+								 </if>
+							  ORDER BY id ASC
+					  		) a
+				) a
+	     WHERE  a.pageNumber = #{page}
+	   order by a.rnum
+	</select>
+	
+	<select id="selectJqgridListCnt" parameterType="jqgridVO" resultType="egovMap">
+		SELECT  count(*) totalTotCnt
+        	  , CEIL(count(*) / #{rows}) totalPage
+		  FROM  ebu
+		 WHERE  1=1
+	  ORDER BY  id ASC
+	</select>
+	
+	<select id="selectJstlList" parameterType="jqgridVO" resultType="egovMap">
+		SELECT id
+			 , name
+			 , phone
+			 , address
+			 , etcc
+			 , @RN:=@RN+1 AS ROWNUM
+		  FROM ebu
+	</select>
+	
+	<update id="updateJqgrid" parameterType="jqgridVO">
+
+			UPDATE ebu
+			SET   NAME 	= #{cellValue}
+			WHERE ID 	= #{id}
+	</update>
+	
+	<update id="updateJqgrid2" parameterType="jqgridVO">
+
+			UPDATE ebu
+			SET   NAME 	= '두번'
+			WHERE aa 	= #{id}
+	</update>
+</mapper>
