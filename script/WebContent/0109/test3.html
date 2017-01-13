@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		//div1 영역에 다음을 추가
+		//$("#div1").append("<p>예제</p>");
+
+		//div1 영역에 제일 처음에 추가
+		//$("#div1").prepend("<p>예제</p>");
+		
+		//p1 다음에 자바 추가
+		//$("#p1").after("<p>자바</p>");
+		
+		//after와 위치만 바뀜
+		//$("<p>자바</p>").insertAfter("#p1");
+
+		//div1을 div2로 복사하기!
+		var s=$("#div1").clone(true);
+		$("#div2").append(s);
+	});
+</script>
+</head>
+<body>
+
+	<div id="div1" style="background: yellow;">
+		<p id="p1">웹프로그래밍</p>
+		<p id="p2">AJAX</p>
+	</div>
+
+	<div id="div2"></div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+		/*
+		$("#div1").click(function(){
+			alert("안녕하세요");
+		})
+	}); */
+
+		//클릭시
+		/* $("#div1").bind("click", function() {
+			alert("안녕하세요");
+		}); */
+		//bind대신 on을 사용할 것을 
+		권장
+		$("#div1").on("click", function() {
+			alert("안녕하세요");
+		});
+
+		//마우스 올렸을때
+		$("#div1").bind("mouseover", function() {
+			$(this).css("background", "green");
+		});
+
+		//마우스가 나갔을때
+		$("#div1").bind("mouseout", function() {
+			$(this).css("background", "none");
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div id="div1">눌러보세요.</div>
+
+
+
+
+</body>
+</html>

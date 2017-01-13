@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		
+		//tb클래스에서 tr이 짝수인것의 css를 변경
+		//$(".tb  tr:odd").css("background", "#efefef");
+		
+		//tb클래스에서 tr의 5번째부터 css를 변경
+		//$(".tb  tr:gt(5)").css("background", "blue");
+		
+		//tb클래스에서 tr의 마지막것의 css를 변경 반대는 first
+		//$(".tb  tr:last").css("background", "yellow");
+
+		//header중에서 첫번째 header의 css변경
+		//$(":header:eq(0)").css("color", "red").css("background", "green");
+
+		//tb클래스에서 td의 값이 "이이이"라는것의 css를 변경
+		//$(".tb td:contains('이이이')").css("color", "red");
+		
+		//tb클래스에서 td의 값이 비어있는 것의 css를 변경
+		$(".tb td:empty").css("background", "green");
+		
+		//tb클래스에서 td의 값이 "김김김"라는것의 위에있는것의 css를 변경
+		//$(".tb td:contains('김김김')").parent().css("color", "yellow");
+	});
+
+	//id btn버튼 클릭시 그것이 숨겨져있는지 판단 (is가 T,F리턴)하여 버튼 클릭시 보여젔다 숨겼다 가능
+	$(function() {
+		$("#btn").click(function() {
+			var isHidden = $("#div1").is(":hidden");
+
+			if (isHidden) {
+				$("#div1").show(2000);
+			} else {
+				$("#div1").hide(2000);
+			}
+		})
+	})
+</script>
+
+</head>
+<body>
+
+	<h3>selectors 예제</h3>
+
+	<table class="tb" border="1"
+		style="width: 300px; margin: 30px auto; border-collapse: collapse;">
+		<tr>
+			<td width="50%" align="center">이름</td>
+			<td width="50%" align="center">점수</td>
+		</tr>
+		<tr align="center">
+			<td>김김김</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>이이이</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>너너너</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>나나나</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>누누누</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>이이이</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>머머머</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>후후후</td>
+			<td>80</td>
+		</tr>
+		<tr align="center">
+			<td>비비비</td>
+			<td>80</td>
+		</tr>
+	</table>
+
+	<div id="div1"
+		style="width: 300px; height: 300px; background: yellow; display: none;"></div>
+	<button id="btn">확인</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

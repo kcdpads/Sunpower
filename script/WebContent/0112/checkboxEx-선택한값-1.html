@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	//이것만 쓰면 체크를 안했을때 undefind가 뜨는데 undefind는 매우중요
+	//undefind는 아예 데이터가 없는것
+	$("#btn").click(function(){
+		/* var s=$("#c1:checkbox:checked").val();
+		alert(s); */
+		
+		//체크박스 중 체크 된것
+		var c=$("form input:checked");
+		var result="";
+		
+		for(var i=0;i<c.length;i++){
+			//next()는 label에 있는 text()로 가져오는것
+			result+=$(c[i]).next().text()+",";
+		}
+		
+		alert(result);
+	});
+});
+</script>
+</head>
+<body>
+
+<form>
+  <p>
+        <input id="c1" type="checkbox"><label for="c1">농구</label>
+        <input id="c2" type="checkbox"><label for="c2">배구</label>
+        <input id="c3" type="checkbox"><label for="c3">축구</label>
+        <input id="c4" type="checkbox"><label for="c4">야구</label>
+  </p>
+  <p>
+        <input id="btn" type="button" value="확인">
+  </p>
+  <p>
+         당신이 선택한 스포츠는 <span id="result"></span> 입니다.
+   </p>
+</form>
+
+</body>
+</html>

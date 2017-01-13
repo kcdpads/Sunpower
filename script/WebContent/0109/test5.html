@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		//자바스크립트가 완성되고 만들어진것이라 다음에 만들어진 폼이 적용되지 않는다.
+		//$("form input[name='upload']").change(function(){
+
+		//on은 동적으로 추간된 매서드에 이벤트를 등록할때 사용
+		$("body").on("change", "form input[name='upload']", function() {
+			if (!$(this).val()) {
+				return;
+			}
+		/* 
+		var s;
+		s = "<tr>";
+		s += "<td>첨부</td>";
+		s += "<td><input type='file' name='upload'></td>";
+		s += "</tr>";
+
+		$("#tb").append(s);
+		 */
+		
+		 var s=$("#tb tr").last().clone();
+			$("#tb").append(s);
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- 파일을 업로드 할떄는 enctype를 명시하지 않으면 파일 이름만 전송되게 된다. -->
+	<form action="" enctype="multipart/form-data">
+		<table>
+			<tbody id="tb">
+				<tr>
+					<td>첨부</td>
+					<td><input type="file" name="upload"></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+
+	</form>
+
+
+
+
+
+</body>
+</html>

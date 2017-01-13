@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+
+		//body태그에 ul태크를 추가하라.
+		//$("#div1").append("<ul></ul>");
+
+		//appendTo는 앞뒤를 바꿈
+		$("<ul></ul>").appendTo("#div1");
+
+		/* for(var i=0; i<4; i++){
+			$("#div1 ul").append("<li>클릭</li>");
+		} */
+		for (var i = 0; i < 4; i++) {
+			$("<li>클릭</li>").appendTo("#div1 ul");
+		}
+
+		//div1에 ul에 li에  클릭이벤트 발생시 alert 발생
+		$("#div1 ul li").each(function(i) {
+			$(this).click(function() {
+				alert(i + 1 + "번째 클릭");
+			})
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div id="div1"></div>
+
+
+</body>
+</html>

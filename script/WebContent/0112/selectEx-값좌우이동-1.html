@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btnRight").click(function() {
+			$("#s1 option:selected").each(function() {
+				$(this).appendTo("#s2");
+			})
+		});
+
+		$("#btnRightAll").click(function() {
+			$("#s1 option").each(function() {
+				$(this).appendTo("#s2");
+			})
+		});
+
+		$("#btnLeft").click(function() {
+			$("#s2 option:selected").each(function() {
+				$(this).appendTo("#s1");
+			})
+		});
+
+		$("#btnLeftAll").click(function() {
+			$("#s2 option").each(function() {
+				$(this).appendTo("#s1");
+			})
+		});
+
+		$("#rightAllSelect").click(function() {
+			if ($("#s2 option").length == 0)
+				return;
+				//attr은 오른쪽이 하나 선택된 상황에서는 작동이 안되서 쓰지 X
+				/* 
+				$("#s2 option").each(function(){
+					$(this).attr("selected", "selected");
+				}); */
+				
+				//위에것을 보완한 스크립트 코드 스크립트로 처리하면 오류가 안난다.
+			var f=document.forms[0];
+				for(var i=0; i<f.s2.length; i++)
+					f.s2[i].selected=true;
+		});
+		
+		//오른쪽 전체 선택 해제
+		$("#rightAllUnselect").click(function(){
+			$("#s2 option").each(function(){
+				$(this).removeAttr("selected");
+			});
+		});
+	});
+</script>
+</head>
+<body>
+
+	<form>
+
+		<div style="display: inline-block;">
+			<select multiple="multiple" id="s1" name="s1" style="width: 100px;">
+				<option value="java">자바</option>
+				<option value="web">웹</option>
+				<option value="spring">스프링</option>
+				<option value="jsp">JSP</option>
+			</select>
+		</div>
+
+		<div style="display: inline-block;">
+			<button type="button" id="btnRight"
+				style="display: block; width: 80px;">&gt;</button>
+			<button type="button" id="btnRightAll"
+				style="display: block; width: 80px;">&gt;&gt;</button>
+			<button type="button" id="btnLeft"
+				style="display: block; width: 80px;">&lt;</button>
+			<button type="button" id="btnLeftAll"
+				style="display: block; width: 80px;">&lt;&lt;</button>
+		</div>
+
+		<div style="display: inline-block;">
+			<select multiple="multiple" id="s2" name="s2" style="width: 100px;"></select>
+		</div>
+
+		<div>
+			<button type="button" id="rightAllSelect">우측 데이터 모두 선택</button>
+			<button type="button" id="rightAllUnselect">우측 데이터 모두 선택 해제</button>
+		</div>
+
+	</form>
+
+</body>
+</html>

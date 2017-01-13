@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	//이것도 되지만 밑에함수를 이용하는 것이 효율적
+	//$("#chk1").attr("checked", "true");
+	
+	//이게 버그도 안나고 효율적
+	$("#chk1").prop("checked", true);
+	
+	$("#chk3").prop("checked", false);
+});
+
+$(function(){
+	$("#check1").change(function(){
+		//attr은 체크 된지 안된지 확인 불가능
+		var s="attr:"+$(this).attr("checked");
+		
+		//prop는 false, ture로 판단가능
+		s+="\nprop:"+$(this).prop("checked");
+		
+		//is로도 확인이 가능
+		s+="\nis:"+$(this).is(":checked");
+		alert(s);
+	});
+});
+</script>
+</head>
+<body>
+
+<form>
+     <p>
+        <input type="checkbox" id="chk1" value="1">1
+        <input type="checkbox" id="chk2" value="2">2
+        <input type="checkbox" id="chk3" value="3" checked="checked">3
+     </p>
+	 <div id="box"></div>
+</form>
+
+<br>
+<input type="checkbox" id="check1" checked="checked">
+<!-- for는 체크박스 클릭하는걸 이걸 눌러도 선택되게 해준다. -->
+<label for="check1">나를 눌러</label>
+
+</body>
+</html>

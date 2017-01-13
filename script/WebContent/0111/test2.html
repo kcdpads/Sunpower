@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+div {
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+	float: left;
+	border: 2px solid blue;
+}
+.blue{background: blue;}
+.lightblue{background: lightblue;}
+.orange{background: orange;}
+</style>
+<script src="jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		var s;
+		
+		//s=$("p").html();
+		s=$("p").find("span").html();
+		
+		
+		
+	});
+	
+	$(function() {
+		$("div").eq(0).addClass("lightblue");
+		$("div").filter(":odd")
+				//eq(0) 자식들중의첫번째 것
+				.eq(0).css("background", "tomato")
+				//이전 엘리멘트를 찾아간다. end
+				.end().eq(1).css("background", "blue")
+				//이전 엘리멘트의 글자색 바꾸기.
+				.end().css("color", "red");
+		
+		//div 전체를 가져옴
+		var $div=$("div");
+		$div.each(function(){
+			var a=$(this).attr("class");
+			if(a=="orange")
+				$(this).html("자바");
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<h3></h3>
+
+	<br>
+	<br>
+	<p>
+		Hello <span>예제</span>
+	</p>
+
+	<div class="blue">A</div>
+	<div>B</div>
+	<div>C</div>
+	<div>D</div>
+	<div>E</div>
+	<div class="orange">F</div>
+	<div>G</div>
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+div {
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+	float: left;
+	border: 2px solid blue;
+}
+.blue{background: blue;}
+.lightblue{background: lightblue;}
+.orange{background: orange;}
+</style>
+<script src="jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$("div:eq(1)")
+		//자신을 제외한 형제들
+		.siblings()
+		.css("background", "red")
+		//하나 위의 엘리멘트의 다음의 것의 텍스트를 바꿈.
+		.end().next().text("AAA")
+		//하나위의 엘리멘트의 다음에 오는 모든것의 css를 바꿈.
+		.end().nextAll().css("color", "blue");
+		
+		//div 1번 다음에 오는 모든것의 p태그를 찾아서 css를 바꾼다.
+		$("div:eq(1)").nextAll().find("p")
+		.css("border", "2px solid black")
+		
+		//add는 현재사용하고 있는 엘리멘트 안에다 span과 일치한 것을 추가하는 것
+		.add("span").css("border", "2px solid black");
+		
+	});
+</script>
+</head>
+<body>
+	<div>A<p>A</p></div>
+	<div>B<p>B</p></div>
+	<div>C<p>C</p></div>
+	<div>D<p>D</p></div>
+	<div>E<p>E</p></div>
+	<div>F<span>F</span></div>
+	<div>G<span>G</span></div>
+
+
+</body>
+</html>

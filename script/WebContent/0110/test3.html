@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+//디자인의 기초 마진과 패딩을 0으로 준다.
+*{
+	margin: 0px; padding: 0px;
+}
+#boxA {
+	height: 2500px;
+}
+
+#p1, #p2 {
+	cursor: pointer;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$("#p1").click(function() {
+			var p = $("#boxB").position().top;
+			$("html, body").animate({
+				scrollTop : p
+			}, "slow");
+		});
+		$("#p2").click(function() {
+			$("html, body").animate({
+				scrollTop : 0
+			}, "slow");
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div id="boxA">
+		맨위
+		<p id="p1">아래로 이동</p>
+	</div>
+
+	<div id="boxB">
+		맨아래
+		<p id="p2">위로 이동</p>
+	</div>
+</body>
+</html>

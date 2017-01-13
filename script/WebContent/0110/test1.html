@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+.bg {
+	background: yellow;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$(".tel").keyup(function() {
+			//maxlength의 숫자를 가지고옴
+			var n = $(this).attr("maxlength");
+
+			//지정된 문자열이 다 채워지면
+			if (this.value.length >= n) {
+				//클래스 tel의 다음에 있는 것을 포커싱함. 
+				$(this).next(".tel").focus();
+				return false;
+			}
+		})
+	});
+
+	$(function() {
+		//table tr에 0보다 큰 것을 타겟으로 잡고 hover()매서드를 준다.
+		$("table tr :gt(0)").hover(
+			function() {
+				$(this).addClass("bg")
+			},
+			function() {
+				$(this).removeClass("bg")
+			}
+
+		);
+	});
+	
+	$(function() {
+		//한번만 클릭되고 다음번 클릭때는 실행이 안되게 하는 매서드 one
+		$("#div1").one("click", function(){
+			alert("누르면 안되는데...");
+		});
+		
+		$("#div2").click(function(){
+			alert("안녕...");
+		});
+		//trigger는 해당 화면이 뜰때 바로 이 매서드를 실행
+		$("#div2").trigger("click");
+	});
+</script>
+</head>
+<body>
+
+	<form action="">
+		<input type="text" class="tel" name="tel1" maxlength="3"> <input
+			type="text" class="tel" name="tel2" maxlength="4"> <input
+			type="text" class="tel" name="tel3" maxlength="4"> <br>
+		<input type="button" value="등록">
+	</form>
+	<br>
+
+	<hr>
+
+	<table border="1" style="width: 300px">
+		<tr>
+			<td>제목</td>
+		</tr>
+		<tr>
+			<td>자바</td>
+		</tr>
+		<tr>
+			<td>안드로이드</td>
+		</tr>
+		<tr>
+			<td>하둡</td>
+		</tr>
+	</table>
+	
+	<hr>
+	<div id=div1>눌러봐</div>
+	
+	<hr>
+	<div id=div2>눌러봐</div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+.yb {
+	background: yellow;
+	border: 1px solid red;
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+		$("#subject>div").click(function() {
+
+			//var s = $(this).text();
+			//val()는 값의 속성값을 가지고 올때 사용 input태그의 value와 textarea의 입력한 값을 가지고 올떄 사용
+			//text보다 html을 많이씀 화면에 보이는 것에서
+			var s = $(this).html();
+
+			//클릭한 거의 속성값을 가지고 와서 a에 저장한다.
+			var a = $(this).attr("data-num");
+
+			//s를 굵은 글씨로 변경
+			s = "<b>" + s + "</b>";
+			$(this).html(s);
+
+			alert("s=" + s + ",  a=" + a);
+		});
+	});
+
+
+	//마우스를 올리면 div1이라는 id에 yb의 css를 입히고 마우스를 내리면 css를 지움
+	$(function() {
+		$("#div1").bind("mouseover", function() {
+			$("#div1").addClass("yb");
+		})
+			.bind("mouseout", function() {
+				$("#div1").removeClass("yb");
+			});
+	});
+
+	/* 
+		//객체.var();는 아래것을 변경하거나 가지고 오고 싶을때
+		객체.val("AA");
+			<input type="text" value="">
+			<input type="hidden" value="">
+			<textarea>
+			<select> <option>
+		
+		//aaa가 진해지는게 아니라 aaa가 <b>aaa</b>로 바뀐다.
+		객체.text();
+		객체.text("<b>aaa</b>");
+		
+		//aaa가 진해진다.
+		객체.html();
+		객체.html("<b>aaa</b>"); 
+		*/
+</script>
+
+</head>
+<body>
+
+	<div id="subject">
+		<div data-num="1">스프링</div>
+		<div data-num="2">HTML 5</div>
+		<div data-num="3">CSS 3</div>
+		<div data-num="4">자바</div>
+
+	</div>
+
+	<div id="div1">마우스를 올려주세요...</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
